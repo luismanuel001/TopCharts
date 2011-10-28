@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" android:textStyle="bold" android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a genre:"
+        android:textAppearance="?android:attr/textAppearanceSmall" android:layout_gravity="center_horizontal"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:id="@+id/rad_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Country" />
+
+        <RadioButton
+            android:id="@+id/rad_electronica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Electronica" />
+
+        <RadioButton
+            android:id="@+id/rad_hip_hop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hip-Hop" />
+
+        <RadioButton
+            android:id="@+id/rad_latin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latin" />
+
+        <RadioButton
+            android:id="@+id/rad_metal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Metal" />
+
+        <RadioButton
+            android:id="@+id/rad_pop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pop" />
+
+        <RadioButton
+            android:id="@+id/rad_punk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Punk" />
+
+        <RadioButton
+            android:id="@+id/rad_rock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rock" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/but_totop10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Top 10 Chart" android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
