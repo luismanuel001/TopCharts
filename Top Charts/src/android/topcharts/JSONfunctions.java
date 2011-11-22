@@ -39,7 +39,7 @@ public class JSONfunctions {
 	            StringBuilder sb = new StringBuilder();
 	            String line = null;
 	            while ((line = reader.readLine()) != null) {
-	            		line = line.replace("&apos;", "'");
+	            		//line = line.replace("&apos;", "'");
 	                    sb.append(line + "\n");
 	            }
 	            is.close();

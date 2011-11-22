@@ -74,9 +74,8 @@ public class Top10Activity extends ListActivity {
 	        songInfo.putString("id", e.get("id").toString());
 	        songInfo.putString("title", e.get("title").toString());
 	        songInfo.putString("video", e.get("video").toString());
-        } catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+        } catch (JSONException e) {
+        	Log.e("log_tag", "Error parsing data "+e.toString());
 		}
         myIntent.putExtras(songInfo);
         startActivityForResult(myIntent, 0);
