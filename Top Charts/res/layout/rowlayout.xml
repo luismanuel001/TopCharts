@@ -2,15 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content" android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4px"
-        android:layout_marginRight="4px"
-        android:layout_marginTop="4px"
-        android:src="@drawable/ic_launcher" />
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
@@ -25,6 +16,12 @@
 
         <TextView
             android:id="@+id/text_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13px" />
+
+        <TextView
+            android:id="@+id/text_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13px" />

@@ -30,7 +30,7 @@ public class JSONfunctions {
 	            is = entity.getContent();
 
 	    }catch(Exception e){
-	            Log.e("log_tag", "Error in http connection "+e.toString());
+	            Log.e("log_tag", "Error in http connection "+e.toString()+url);
 	    }
 	    
 	  //convert response to string
@@ -39,8 +39,9 @@ public class JSONfunctions {
 	            StringBuilder sb = new StringBuilder();
 	            String line = null;
 	            while ((line = reader.readLine()) != null) {
-	            		//line = line.replace("&apos;", "'");
-	                    sb.append(line + "\n");
+	        		//line = line.replace("&apos;", "'");
+	        		line = line.replace("'", "&apos;");
+	                sb.append(line + "\n");
 	            }
 	            is.close();
 	            result=sb.toString();
