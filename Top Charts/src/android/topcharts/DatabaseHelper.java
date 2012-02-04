@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		//StationsTable.onCreate(database);
 		database.execSQL("create table stations "
 				+ "(_id integer primary key, "
-				+ " name text not null, " + " desc text,"
+				+ " name text not null, " + " description text,"
 				+ " genre text," + " market text);");
 		database.execSQL("create table locations "
 				+ "(_id integer primary key autoincrement, "

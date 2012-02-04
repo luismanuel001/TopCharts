@@ -3,12 +3,17 @@ package android.topcharts;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.GZIPInputStream;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,18 +21,34 @@ import android.util.Log;
 
 public class JSONfunctions {
 
-	public static JSONObject getJSONfromURL(String url){
+	public static JSONObject getJSONfromURL(String url, String arg0){
 		InputStream is = null;
 		String result = "";
-		JSONObject jArray = null;
-		
+		JSONObject jArray = null;		
+		HttpEntity entity = null;
 		//http post
 	    try{
 	            HttpClient httpclient = new DefaultHttpClient();
 	            HttpPost httppost = new HttpPost(url);
+	            httppost.addHeader("Accept-Encoding", "gzip");
+	            List<BasicNameValuePair> nameValuePairs = new ArrayList<BasicNameValuePair>(1);
+	            nameValuePairs.add(new BasicNameValuePair("arg0", arg0));
+	            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 	            HttpResponse response = httpclient.execute(httppost);
-	            HttpEntity entity = response.getEntity();
-	            is = entity.getContent();
+	            entity = response.getEntity();
+	            
+	            if (entity.getContentEncoding() != null) 
+	            {
+		            String contentEncoding = entity.getContentEncoding().toString();
+		            if (contentEncoding.contains("gzip")) 
+		            { 
+		                is = new GZIPInputStream(entity.getContent());
+		            }
+	            } 
+	            else 
+	            { 
+	                is = entity.getContent();
+	            }
 
 	    }catch(Exception e){
 	            Log.e("log_tag", "Error in http connection "+e.toString()+url);

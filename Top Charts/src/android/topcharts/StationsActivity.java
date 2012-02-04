@@ -51,7 +51,7 @@ public class StationsActivity extends ListActivity {
 	}
     
 	private void fillStationsTable(){
-		String location, url;
+		String location;
         
         Bundle bundle = getIntent().getExtras();
         location = bundle.getString("location");
@@ -60,8 +60,8 @@ public class StationsActivity extends ListActivity {
         zip.setText("Stations near " + location);
         
         if (dbHelper.checkZipCode(location) == false){
-	        url = "http://api.yes.com/1/stations?loc=" + location + "&max=100";
-	        JSONObject json = JSONfunctions.getJSONfromURL(url);
+	        //url = "http://api.yes.com/1/stations?loc=" + location + "&max=100";
+	        JSONObject json = JSONfunctions.getJSONfromURL("http://lmanuel.x10.mx/topcharts/query.php", location);
 	        
 	        try{
 	        	
@@ -69,7 +69,7 @@ public class StationsActivity extends ListActivity {
 	        	
 		        for(int i=0;i<stations.length();i++){						
 					JSONObject e = stations.getJSONObject(i);
-					dbHelper.insertStation(e.getInt("id"), e.getString("name"), e.getString("desc"), e.getString("genre"), e.getString("market"), location);			
+					dbHelper.insertStation(e.getInt("_id"), e.getString("name"), e.getString("description"), e.getString("genre"), e.getString("market"), location);			
 				}
 
 		        
@@ -81,7 +81,7 @@ public class StationsActivity extends ListActivity {
         cursor = dbHelper.getLocationInfo(location);
         cursor.moveToFirst();
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.rowlayout, cursor,
-        		new String[] {"name", "desc"}, 
+        		new String[] {"name", "description"}, 
                 new int[] { R.id.text_song, R.id.text_artist});
 		setListAdapter(adapter);
 	}

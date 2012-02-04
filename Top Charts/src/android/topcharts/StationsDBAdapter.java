@@ -34,13 +34,17 @@ public class StationsDBAdapter {
 	
 /** * Create a new station If the station is successfully created return the new * rowId for that note, otherwise return a -1 to indicate failure. */
 
-	public void insertStation(int id, String name, String desc, String genre, String market, String zipcode) {
+	public void insertStation(int id, String name, String description, String genre, String market, String zipcode) {
 		if (db.rawQuery("SELECT zipcode, market FROM locations WHERE zipcode = '"
 						+ zipcode +"' AND market = '"+ market +"';", null).getCount() == 0){
 			db.execSQL( "INSERT INTO locations VALUES(null, '" + zipcode + "', '"
 					+ market + "')");}
-		db.execSQL( "INSERT INTO stations VALUES(" + id + ", '"
-					+ name + "', '" + desc + "', '" + genre + "', '" + market + "')");
+		if (db.rawQuery("SELECT _id FROM stations WHERE _id = '"
+				+ id +"';", null).getCount() == 0){
+			db.execSQL( "INSERT INTO stations VALUES(" + id + ", '"+ name + 
+						"', '" + description + "', '" + genre + "', '" + market + "')");
+		}
+					
 	}
 	
 	public boolean insertTop10(int position, int stationID, int songID) {
@@ -50,7 +54,7 @@ public class StationsDBAdapter {
 		if (cursor.getCount() == 0){
 			
 			String url = "http://api.yes.com/1/media?mid=" + songID;
-	        JSONObject json = JSONfunctions.getJSONfromURL(url);
+	        JSONObject json = JSONfunctions.getJSONfromURL(url, null);
 	        try{
 	        	
 	        	JSONArray song = json.getJSONArray("songs");				
@@ -129,7 +133,7 @@ public class StationsDBAdapter {
 	}
 
 	public Cursor getLocationInfo(String zipcode) throws SQLException{
-		return db.rawQuery(   "SELECT stations._id, name, desc, genre,"
+		return db.rawQuery(   "SELECT stations._id, name, description, genre,"
 							+ " stations.market FROM stations, locations"
 							+ " WHERE locations.market = stations.market AND zipcode = '"
 							+ zipcode +"'", null);

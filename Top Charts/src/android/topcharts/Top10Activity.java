@@ -64,7 +64,7 @@ public class Top10Activity extends ListActivity {
         
         if (dbHelper.checkStation(id) == false){
 	        url = "http://api.yes.com/1/chart?name=" + dbHelper.getName(id);
-	        JSONObject json = JSONfunctions.getJSONfromURL(url);
+	        JSONObject json = JSONfunctions.getJSONfromURL(url, null);
 	        
 	        try{
 	        	
