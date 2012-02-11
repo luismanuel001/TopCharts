@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content" android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/text_id"
+        android:layout_width="40dp"
+        android:layout_height="80dp"
+        android:background="#DDDDDD"
+        android:gravity="center"
+        android:text="10"
+        android:textColor="#000000"
+        android:textSize="35px"
+        android:textStyle="bold"
+        android:typeface="sans" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="80dp"
+        android:layout_height="fill_parent"
+        android:src="@drawable/music" android:background="#AAAAAA"/>
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
@@ -12,20 +30,16 @@
             android:id="@+id/text_song"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20px" android:textStyle="bold"/>
-
+            android:text="Song Title"
+            android:textSize="25px"
+            android:textStyle="bold" android:paddingLeft="10px"/>
+
         <TextView
             android:id="@+id/text_artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13px" />
-
-        <TextView
-            android:id="@+id/text_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="13px" />
-
+            android:text="Artist Name"
+            android:textSize="15px" android:paddingLeft="10px"/>
     </LinearLayout>
 
 </LinearLayout>

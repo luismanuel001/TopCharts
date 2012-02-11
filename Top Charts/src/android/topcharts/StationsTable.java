@@ -12,6 +12,9 @@ public class StationsTable {
 	private static final String CREATE_LOCATIONS = "create table locations "
 			+ "(_id integer primary key autoincrement, "
 			+ " zipcode text not null, " + " market text);";
+	private static final String CREATE_CHARTS = "CREATE TABLE charts "
+			+ "(_id VARCHAR(30) PRIMARY KEY, rank INT NOT NULL, "
+			+ "title TEXT NOT NULL, " + "name TEXT NOT NULL,  image TEXT);";
 //	private static final String FOREIGN_KEY_TRIGGER = "CREATE TRIGGER fk_station_location "
 //			+ " BEFORE INSERT ON stations"
 //			+ " FOR EACH ROW BEGIN"
@@ -23,6 +26,7 @@ public class StationsTable {
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(CREATE_STATIONS);
 		database.execSQL(CREATE_LOCATIONS);
+		database.execSQL(CREATE_CHARTS);
 		//database.execSQL(FOREIGN_KEY_TRIGGER);
 		
 	}

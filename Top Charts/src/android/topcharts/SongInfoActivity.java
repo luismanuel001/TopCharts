@@ -27,8 +27,8 @@ import android.widget.TextView;
 public class SongInfoActivity extends Activity{
 	boolean VIDEO_EXISTS = false;
 	private String video_url;
-	private StationsDBAdapter dbHelper;
-	private Cursor cursor;
+	//private StationsDBAdapter dbHelper;
+	//private Cursor cursor;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -36,18 +36,13 @@ public class SongInfoActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.songinfo);
         
-        dbHelper = new StationsDBAdapter(this);
-		dbHelper.open();
-		
-        
         final Bundle bundle = getIntent().getExtras();
-        cursor = dbHelper.getSong(bundle.getInt("songID"));
         TextView by = (TextView) findViewById(R.id.text_by);
-        by.setText(cursor.getString(cursor.getColumnIndex("artist")));
+        by.setText(bundle.getString("artist"));
         TextView title = (TextView) findViewById(R.id.text_title);
-        title.setText(cursor.getString(cursor.getColumnIndex("title")));
+        title.setText(bundle.getString("title"));
         
-        String cover = cursor.getString(cursor.getColumnIndex("cover"));
+        String cover = bundle.getString("imageURL");
         try {
         	  ImageView i = (ImageView)findViewById(R.id.img_cover);
         	  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(cover).getContent());
@@ -59,27 +54,16 @@ public class SongInfoActivity extends Activity{
         	}
 
         
-    	video_url = getYouTubeURL(cursor.getString(cursor.getColumnIndex("title")), cursor.getString(cursor.getColumnIndex("artist")));
-
-        cursor.close();
-        if (dbHelper != null) {
-			dbHelper.close();
-		}
+    	video_url = getYouTubeURL(bundle.getString("title"), bundle.getString("artist"));
         
         TextView video = (TextView) findViewById(R.id.text_video);
-        video.setText(cover);
+        video.setText(video_url);
         
         Button next = (Button) findViewById(R.id.but_video);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	
-            	//if (VIDEO_EXISTS){
-            		//startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(bundle.getString("video"))));
-            	
-            		
-            		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(video_url)));
-            	//}
-            	
+            	startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(video_url)));           	
             	
             }
 
@@ -94,7 +78,7 @@ public class SongInfoActivity extends Activity{
         q = q.replace(" ", "%20");
         
         try {
-	        URL jsonURL = new URL("http://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q="+q+"&category=Music&format=1&max-results=10");
+	        URL jsonURL = new URL("http://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q="+q+"&category=Music&max-results=10");
 	        URLConnection jc = jsonURL.openConnection();
 	        InputStream is = jc.getInputStream();
 	        String jsonTxt = IOUtils.toString( is );
@@ -122,6 +106,6 @@ public class SongInfoActivity extends Activity{
     
     @Override
     public void onBackPressed() {
-    	finish();
+    	this.finish();
     }
 }

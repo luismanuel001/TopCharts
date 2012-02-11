@@ -28,7 +28,9 @@ public class StationsDBAdapter {
 	}
 
 	public void close() {
-		dbHelper.close();
+		if (dbHelper != null) {
+            dbHelper.close();
+        }
 	}
 
 	
@@ -76,12 +78,22 @@ public class StationsDBAdapter {
 		return result;
 	}
 	
-	public void insertSong(int id, String title, String artist, int artistID, String genre, String cover, String yesURL, String lyricsURL) {
+	public void insertSong(int id, String title, String artist, int artistID, String genre, String cover, String yesURL, String lyricsURL) throws SQLException{
 		//if (title != "null" && artist != "null"){
 			db.execSQL( "INSERT INTO songs VALUES( " + id + ", '" + title + "', '"
 						+ artist + "', " + artistID + ", '" + genre + "', '" + cover + "', '"
 						+ yesURL + "', '" + lyricsURL + "')");			
 		//}
+	}
+	
+	public void insertChart(String id, int rank, String title, String artist, String image) {
+		try{	
+		db.execSQL( "INSERT INTO charts VALUES( NULL, '" + id + "', " + rank + ", '"
+						+ title + "', '" + artist + "', '" + image + "')");	
+			
+		}catch(SQLException e){
+	   	 Log.e("log_tag", "Error Inserting to Charts data "+e.toString());
+   }
 	}
 	
 /** Update the station */
@@ -101,6 +113,16 @@ public class StationsDBAdapter {
 	public Cursor fetchTop10FromStation(int stationID) {
 		return db.rawQuery( "SELECT * FROM songs, top10 WHERE top10.stationID = "
 							+ stationID + " AND top10.songID = songs._id ORDER BY top10.position", null);
+	}
+	
+	public Cursor fetchChart(String id) {
+		Cursor result = null;
+		try{
+			result = db.rawQuery( "SELECT * FROM charts WHERE chartID = '" + id + "'", null);
+		}catch(SQLException e){
+		   	 Log.e("log_tag", "Error quering to Charts data "+e.toString());
+		}
+		return result;
 	}
 
 	public Cursor fetchStations(int id) throws SQLException {
@@ -131,6 +153,12 @@ public class StationsDBAdapter {
 						+ id, null).getCount() != 0) result = true;
 		return result;
 	}
+	
+	public boolean checkChart(String id) throws SQLException{
+		boolean result = false;
+		if (db.rawQuery("SELECT * FROM charts WHERE chartID = '" + id + "'", null).getCount() != 0) result = true;
+		return result;
+	}
 
 	public Cursor getLocationInfo(String zipcode) throws SQLException{
 		return db.rawQuery(   "SELECT stations._id, name, description, genre,"
@@ -146,6 +174,11 @@ public class StationsDBAdapter {
 		return mCursor.getInt(mCursor.getColumnIndex("songID"));
 	}
 	
+	public Cursor getChartRow(int position, String id) throws SQLException {
+		Cursor mCursor = db.rawQuery("SELECT * FROM charts WHERE chartID = '"+ id +"' AND rank = " + position, null);
+		mCursor.moveToFirst();
+		return mCursor;
+	}
 	public Cursor getSong(int id) throws SQLException {
 		
 		Cursor mCursor = db.rawQuery(	"SELECT * FROM songs WHERE _id = " + id, null);

@@ -32,6 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		database.execSQL("create table top10 "
 				+ "(_id integer primary key autoincrement, position integer not null,"
 				+ " stationID integer not null, " + "songID integer not null);");
+		database.execSQL("CREATE TABLE charts "
+				+ "(_id INTEGER PRIMARY KEY AUTOINCREMENT, chartID VARCHAR(30) NOT NULL, rank INT NOT NULL, "
+				+ "title TEXT NOT NULL, " + "name TEXT NOT NULL,  image TEXT, UNIQUE(_id, rank));");
 	}
 
 	// Method is called during an upgrade of the database,
@@ -44,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		database.execSQL("DROP TABLE IF EXISTS locations");
 		database.execSQL("DROP TABLE IF EXISTS songs");
 		database.execSQL("DROP TABLE IF EXISTS top10");
+		database.execSQL("DROP TABLE IF EXISTS charts");
 		onCreate(database);
 	}
 }

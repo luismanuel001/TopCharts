@@ -8,13 +8,14 @@
         android:id="@+id/top10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="Top 10 Chart"
-        android:textAppearance="?android:attr/textAppearanceLarge" android:layout_gravity="center_horizontal"/>
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="370dp" >
     </ListView>
 
 </LinearLayout>
