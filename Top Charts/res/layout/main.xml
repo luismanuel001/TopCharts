@@ -15,7 +15,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select a genre:"
+        android:text="Select a Chart:"
         android:textAppearance="?android:attr/textAppearanceSmall" android:layout_gravity="center_horizontal"/>
 
     <RadioGroup
@@ -28,49 +28,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Country" />
+            android:text="Hot 100" />
 
         <RadioButton
             android:id="@+id/rad_electronica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Electronica" />
+            android:text="Radio Songs" />
 
         <RadioButton
             android:id="@+id/rad_hip_hop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hip-Hop" />
+            android:text="R&amp;B/Hip-Hop Songs" />
 
         <RadioButton
             android:id="@+id/rad_latin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Latin" />
+            android:text="Latin Songs" />
 
         <RadioButton
             android:id="@+id/rad_metal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Metal" />
+            android:text="Alternative Songs" />
 
         <RadioButton
             android:id="@+id/rad_pop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pop" />
+            android:text="Pop Songs" />
 
         <RadioButton
             android:id="@+id/rad_punk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Punk" />
+            android:text="Dance/Club Songs" />
 
         <RadioButton
             android:id="@+id/rad_rock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rock" />
+            android:text="Rock Songs" />
 
     </RadioGroup>
 
@@ -78,6 +78,6 @@
         android:id="@+id/but_totop10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Top 10 Chart" android:layout_gravity="center_horizontal"/>
+        android:text="Go to Chart" android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

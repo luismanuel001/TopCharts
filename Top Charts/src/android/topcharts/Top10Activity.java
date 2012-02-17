@@ -60,10 +60,10 @@ public class Top10Activity extends ListActivity {
 		String url;
 
         
-        //Bundle bundle = getIntent().getExtras();
-        //id = bundle.getString("id");
+        Bundle bundle = getIntent().getExtras();
+        chartID = bundle.getString("chart");
         
-        chartID = "hot-100";
+        //chartID = "hot-100";
         
         // Capitalizes each word on chartID
         String s = chartID.replace("-", " ");

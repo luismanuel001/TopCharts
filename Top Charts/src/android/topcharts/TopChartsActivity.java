@@ -22,30 +22,30 @@ public class TopChartsActivity extends Activity {
 		        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
 		    	int checkedRadioButton = radioGroup.getCheckedRadioButtonId();
 		
-		    	String genre = "";
+		    	String chart = "";
 		
 		    	switch (checkedRadioButton) {
-		    	case R.id.rad_country : genre = "Country";
+		    	case R.id.rad_country : chart = "hot-100";
 		    	break;
-		    	case R.id.rad_electronica : genre = "Electronica";
+		    	case R.id.rad_electronica : chart = "radio-songs";
 		    	break;
-		    	case R.id.rad_hip_hop : genre = "Hip-Hop";
+		    	case R.id.rad_hip_hop : chart = "r-b-hip-hop-songs";
 		    	break;
-		    	case R.id.rad_latin : genre = "Latin";
+		    	case R.id.rad_latin : chart = "latin-songs";
 		    	break;
-		    	case R.id.rad_metal : genre = "Metal";
+		    	case R.id.rad_metal : chart = "alternative-songs";
 		    	break;
-		    	case R.id.rad_pop : genre = "Pop";
+		    	case R.id.rad_pop : chart = "pop-songs";
 		    	break;
-		    	case R.id.rad_punk : genre = "Punk";
+		    	case R.id.rad_punk : chart = "dance-club-play-songs";
 		    	break;
-		    	case R.id.rad_rock : genre = "Rock";
+		    	case R.id.rad_rock : chart = "rock-songs";
 		    	break;
 		    	}
 		            	
 		        Intent myIntent = new Intent(view.getContext(), Top10Activity.class);
 		        Bundle bundle = new Bundle();
-		        bundle.putString("genre", genre);
+		        bundle.putString("chart", chart);
 		        myIntent.putExtras(bundle);
 		        startActivityForResult(myIntent, 0);
 		        }
