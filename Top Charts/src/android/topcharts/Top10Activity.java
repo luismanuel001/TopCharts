@@ -46,7 +46,7 @@ public class Top10Activity extends ListActivity {
         dbHelper.open();
         cursor = dbHelper.getChartRow(position+1, chartID);
 	    songInfo.putString("title", cursor.getString(cursor.getColumnIndex("title")));
-	    songInfo.putString("artist", cursor.getString(cursor.getColumnIndex("name")));
+	    songInfo.putString("artist", cursor.getString(cursor.getColumnIndex("artist")));
 	    songInfo.putString("imageURL", cursor.getString(cursor.getColumnIndex("image")));
         myIntent.putExtras(songInfo);
         cursor.close();
@@ -91,7 +91,7 @@ public class Top10Activity extends ListActivity {
 		        while(i<songs.length()){
 		        	
 		        	JSONObject e = songs.getJSONObject(i);
-					dbHelper.insertChart(e.getString("_id"), e.getInt("rank"), e.getString("title"), e.getString("name"), e.getString("image"));
+					dbHelper.insertChart(e.getString("_id"), e.getInt("rank"), e.getString("title"), e.getString("artist"), e.getString("image"));
 					i++;
 				}
 	        }catch(JSONException e){
@@ -102,7 +102,7 @@ public class Top10Activity extends ListActivity {
         cursor = dbHelper.fetchChart(chartID);
     	cursor.moveToFirst();
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.rowlayout, cursor,
-        		new String[] {"rank", "title", "name"}, 
+        		new String[] {"rank", "title", "artist"}, 
                 new int[] { R.id.text_id, R.id.text_song, R.id.text_artist});
 		setListAdapter(adapter);
 	}

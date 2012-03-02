@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ " stationID integer not null, " + "songID integer not null);");
 		database.execSQL("CREATE TABLE charts "
 				+ "(_id INTEGER PRIMARY KEY AUTOINCREMENT, chartID VARCHAR(30) NOT NULL, rank INT NOT NULL, "
-				+ "title TEXT NOT NULL, " + "name TEXT NOT NULL,  image TEXT, UNIQUE(_id, rank));");
+				+ "title TEXT NOT NULL, " + "artist TEXT NOT NULL,  image TEXT, UNIQUE(_id, rank));");
 	}
 
 	// Method is called during an upgrade of the database,
