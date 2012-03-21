@@ -2,20 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" android:background="#f1f1f2">
 
     <TextView
         android:id="@+id/top10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Top 10 Chart"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge" android:textColor="#000000"/>
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/list"
+        android:layout_height="370dp"
         android:layout_width="fill_parent"
-        android:layout_height="370dp" >
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@drawable/list_selector">
+        
     </ListView>
 
 </LinearLayout>

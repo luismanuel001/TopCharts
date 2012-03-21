@@ -3,5 +3,19 @@
 
     <string name="hello">Hello World, TopChartsActivity!</string>
     <string name="app_name">Top Charts</string>
+    <string name="image">image</string>
+    <string name="rank">100</string>
+    <string name="song_title">Song Title</string>
+    <string name="artist_name">Artist Name</string>
+    <string name="hot_100">Hot\n100</string>
+    <string name="radio_songs">Radio\nSongs</string>
+    <string name="r_b_hip_hop_songs">Hip\nHop Songs</string>
+    <string name="latin_songs">Latin\nSongs</string>
+    <string name="alternative_songs">Alternative\nSongs</string>
+    <string name="pop_songs">Pop\nSongs</string>
+    <string name="dance_club_play_songs">Dance\nClub Songs</string>
+    <string name="rock_songs">Rock\nSongs</string>
+    <string name="ringtones">Top\nRingtones</string>
+    <string name="youtube">Top\nYouTube</string>
 
 </resources>
