@@ -107,18 +107,6 @@ public class Top10Activity extends Activity {
 		        	
 		        	JSONObject e = songs.getJSONObject(i);
 					dbHelper.insertChart(e.getString("_id"), e.getInt("rank"), e.getString("title"), e.getString("artist"), e.getString("image"));
-					
-
-					// creating new HashMap
-					HashMap<String, String> map = new HashMap<String, String>();
-					// adding each child node to HashMap key => value
-					map.put(KEY_TITLE, e.getString("title"));
-					map.put(KEY_ARTIST, e.getString("artist"));
-					map.put(KEY_RANK, Integer.toString(e.getInt("rank")));
-					map.put(KEY_THUMB_URL, e.getString("image"));
-
-					// adding HashList to ArrayList
-					songsList.add(map);
 					i++;
 				}
 	        }catch(JSONException e){
@@ -128,8 +116,18 @@ public class Top10Activity extends Activity {
         
         cursor = dbHelper.fetchChart(chartID);
     	cursor.moveToFirst();
-    	
-    	
+    	while(cursor.moveToNext()){
+			// creating new HashMap
+			HashMap<String, String> map = new HashMap<String, String>();
+			// adding each child node to HashMap key => value
+			map.put(KEY_TITLE, cursor.getString(cursor.getColumnIndex("title")));
+			map.put(KEY_ARTIST, cursor.getString(cursor.getColumnIndex("artist")));
+			map.put(KEY_RANK, Integer.toString(cursor.getInt(cursor.getColumnIndex("rank"))));
+			map.put(KEY_THUMB_URL, cursor.getString(cursor.getColumnIndex("image")));
+	
+			// adding HashList to ArrayList
+			songsList.add(map);
+    	}
 
 		list=(ListView)findViewById(R.id.list);
 		// Getting adapter by passing xml data ArrayList
