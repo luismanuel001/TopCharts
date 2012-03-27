@@ -33,6 +33,7 @@ import android.widget.TextView;
 public class SongInfoActivity extends Activity{
 	boolean VIDEO_EXISTS = false;
 	private String video_url;
+	private String artistTitle;
 	//private StationsDBAdapter dbHelper;
 	//private Cursor cursor;
 	
@@ -43,10 +44,11 @@ public class SongInfoActivity extends Activity{
         setContentView(R.layout.songinfo);
         
         final Bundle bundle = getIntent().getExtras();
+        
         TextView by = (TextView) findViewById(R.id.text_by);
-        by.setText(bundle.getString("artist"));
+        by.setText(bundle.getString("artist").replace("&apos;", "'"));
         TextView title = (TextView) findViewById(R.id.text_title);
-        title.setText(bundle.getString("title"));
+        title.setText(bundle.getString("title").replace("&apos;", "'"));
         
         String cover = bundle.getString("imageURL");
         try {
@@ -59,7 +61,7 @@ public class SongInfoActivity extends Activity{
         	  e.printStackTrace();
         	}
 
-        
+        artistTitle = bundle.getString("artist")+" "+bundle.getString("title").replace("&apos;", "'");
     	video_url = getYouTubeURL(bundle.getString("title"), bundle.getString("artist"));
         
         //TextView video = (TextView) findViewById(R.id.text_video);
@@ -74,7 +76,7 @@ public class SongInfoActivity extends Activity{
             		Intent intent = new Intent(Intent.ACTION_MAIN);
             		intent.setAction(MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH);
             		intent.setComponent(new ComponentName("com.spotify.mobile.android.ui", "com.spotify.mobile.android.ui.Launcher"));
-            		intent.putExtra(SearchManager.QUERY, bundle.getString("artist")+" "+bundle.getString("title"));
+            		intent.putExtra(SearchManager.QUERY, artistTitle);
             		startActivity(intent);
             	}
             	else{
@@ -95,7 +97,7 @@ public class SongInfoActivity extends Activity{
             	if(isAppInstalled("com.amazon.mp3")){
                 	
 	            	Intent intent = new Intent();
-	            	String query = bundle.getString("artist")+" "+bundle.getString("title");
+	            	String query = artistTitle;
 	            	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            	intent.setClassName("com.amazon.mp3", "com.amazon.mp3.activity.IntentProxyActivity");
 	            	intent.setAction("com.amazon.mp3.action.EXTERNAL_EVENT");

@@ -116,7 +116,7 @@ public class Top10Activity extends Activity {
         
         cursor = dbHelper.fetchChart(chartID);
     	cursor.moveToFirst();
-    	while(cursor.moveToNext()){
+    	while(!cursor.isAfterLast()){
 			// creating new HashMap
 			HashMap<String, String> map = new HashMap<String, String>();
 			// adding each child node to HashMap key => value
@@ -127,6 +127,7 @@ public class Top10Activity extends Activity {
 	
 			// adding HashList to ArrayList
 			songsList.add(map);
+			cursor.moveToNext();
     	}
 
 		list=(ListView)findViewById(R.id.list);

@@ -135,8 +135,14 @@ public class TopChartsActivity extends Activity {
         bundle.putString("chart", chart);
         myIntent.putExtras(bundle);
         startActivityForResult(myIntent, 0);
-    	
-    	
     }
-
+    
+    public void onBackPressed() {
+    	this.onDestroy();
+    }
+    
+    public void onDestroy() {
+    	super.onDestroy();
+    	this.finish();
+    }
 }

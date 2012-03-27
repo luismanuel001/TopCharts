@@ -83,11 +83,16 @@ public final class R {
         public static final int alternative_songs=0x7f04000a;
         public static final int app_name=0x7f040001;
         public static final int artist_name=0x7f040005;
+        public static final int by=0x7f040011;
         public static final int dance_club_play_songs=0x7f04000c;
+        public static final int down_amazon=0x7f040013;
         public static final int hello=0x7f040000;
         public static final int hot_100=0x7f040006;
         public static final int image=0x7f040002;
+        public static final int img_desc=0x7f040015;
         public static final int latin_songs=0x7f040009;
+        public static final int play_spotify=0x7f040012;
+        public static final int play_youtube=0x7f040014;
         public static final int pop_songs=0x7f04000b;
         public static final int r_b_hip_hop_songs=0x7f040008;
         public static final int radio_songs=0x7f040007;
@@ -95,6 +100,7 @@ public final class R {
         public static final int ringtones=0x7f04000e;
         public static final int rock_songs=0x7f04000d;
         public static final int song_title=0x7f040004;
+        public static final int title=0x7f040010;
         public static final int youtube=0x7f04000f;
     }
 }

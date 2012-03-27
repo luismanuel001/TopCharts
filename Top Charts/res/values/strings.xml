@@ -17,5 +17,12 @@
     <string name="rock_songs">Rock\nSongs</string>
     <string name="ringtones">Top\nRingtones</string>
     <string name="youtube">Top\nYouTube</string>
-
+	<string name="title">Title</string>
+    <string name="by">by</string>
+    <string name="play_spotify">Play in Spotify</string>
+    <string name="down_amazon">Download on Amazon MP3</string>
+    <string name="play_youtube">Play Youtube video</string>
+    <string name="img_desc">Song Image</string>
+    
+	
 </resources>

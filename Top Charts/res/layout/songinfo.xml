@@ -9,7 +9,7 @@
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="@string/title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center_horizontal"
         android:textColor="#000000"/>
@@ -18,7 +18,7 @@
         android:id="@+id/text_by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="by"
+        android:text="@string/by"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_gravity="center_horizontal"
         android:textColor="#000000"/>
@@ -28,7 +28,8 @@
         android:layout_width="150dip"
         android:layout_height="150dip"
         android:src="@drawable/ic_launcher"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/img_desc"/>
 
     <TextView
         android:id="@+id/text_video"
@@ -41,21 +42,21 @@
         android:id="@+id/but_spotify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play in Spotify"
+        android:text="@string/play_spotify"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/but_amazon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Download at Amazon MP3"
+        android:text="@string/down_amazon"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/but_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Youtube Video" 
+        android:text="@string/play_youtube" 
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
